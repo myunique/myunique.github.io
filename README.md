@@ -1,3 +1,3 @@
-# myunique's live-demos
+# myunique's demos
 
-[myunique's live-demos](https://myunique.github.io)
+[myunique's demos](https://myunique.github.io)
