@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>任务五：基础JavaScript练习（二）</title>
+<style type="text/css">
+
+div{
+	display:inline-block;
+	width:5px;
+	height:12px;
+	margin-left:5px;
+	border-left:1px solid #ccc;
+}
+#queue{
+    margin:10px;
+    padding:0;
+    height:200px;
+    width:1260px;
+}
+#queue li{
+	display:inline-block;
+	text-align:center;
+    margin-right: 1px;
+	width:20px;
+	height:20px;
+	font-size:10px;
+	color:#FFF;
+	background:#F00;
+	cursor:pointer;
+    vertical-align: bottom;
+}
+
+</style>
+
+</head>
+
+<body>
+
+	<input type="text" id="inputNum" />
+	<input type="button" id="leftIn" value="左侧入"/>
+	<input type="button" id="rightIn" value="右侧入"/>
+    <div></div>
+    <input type="button" id="leftOut" value="左侧出"/>
+    <input type="button" id="rightOut" value="右侧出"/>
+    <ul id="queue"></ul>
+    <input type="button" id="sortQueue" value="排序"/>
+    
+    
+    
+    <script type="text/javascript">
+		var inputNum=document.getElementById("inputNum");
+		var leftIn=document.getElementById("leftIn");
+		var rightIn=document.getElementById("rightIn");
+		var leftOut=document.getElementById("leftOut");
+		var rightOut=document.getElementById("rightOut");
+		var queue=document.getElementById("queue");
+		var sortQ=document.getElementById("sortQueue");
+		
+		
+		function addNum(direction){
+			if((!inputNum.value) || (isNaN(inputNum.value)) || (inputNum.value<10) || (inputNum.value>100)){
+				alert("请输入10-100之间的数字");//输入框为空、输入非数字或者输入超出10-100的范围时，按钮点击时，跳出提示框
+				inputNum.focus();
+				inputNum.value="";
+			}
+			else if(queue.children.length>=60){
+				alert("队列数最多为60");//队列元素数量最多限制为60个
+				//console.log(queue.children.length);
+				inputNum.focus();
+			}
+			else{
+				var newLi=document.createElement("li");
+				newLi.innerHTML=inputNum.value;
+				newLi.style.height=inputNum.value*2+"px";
+				newLi.style.marginTop=200-inputNum.value*2 + 'px';
+				if(direction==="left"){
+					queue.insertBefore(newLi,queue.firstChild);//将生成的li元素从前方放入
+				}
+				else if(direction==="right"){
+					queue.appendChild(newLi);//将生成的li元素从末尾放入
+				}
+			}
+			
+		}
+		
+		function removeNum(node,direction){
+			if(!queue){
+				alert("队列已空");
+                return false;
+			}
+			else{
+				if(direction==="left"){
+					alert("删除数字："+queue.firstChild.innerHTML+"！");
+					queue.removeChild(queue.firstChild);//将生成的li元素从前方放入
+				}
+				else if(direction==="right"){
+					alert("删除数字："+queue.lastChild.innerHTML+"！");
+					queue.removeChild(queue.lastChild);//将生成的li元素从末尾放入
+				}
+				else{
+					alert("删除数字："+queue.removeChild(node).innerHTML+"！");
+				}
+			}
+		}
+
+		function sortQueue() {
+            var queue=document.getElementById("queue");
+            var len=queue.childNodes.length;
+            if(len==0){
+                alert("队列已空");
+                return false;
+            }
+            else if(len==1){
+                return;
+            }
+            for(var i=0; i<len; i++){
+                for(var j=0; j<len-i-1; j++){
+                    setTimeout((function (j) {      //闭包
+                        console.log(j);
+                        var queue=document.getElementById("queue");
+                        var nodes=queue.childNodes;
+                        var value1=nodes[j].innerHTML;
+                        var value2=nodes[j+1].innerHTML;
+                        if(parseInt(nodes[j].style.height) > parseInt(nodes[j+1].style.height)){
+                            nodes[j].style.height=value2*2+"px";
+                            nodes[j].style.marginTop=(200-value2*2)+"px";
+                            nodes[j].innerHTML =value2;
+                            nodes[j+1].style.height=value1*2+"px";
+                            nodes[j+1].style.marginTop=(200-value1*2)+"px";
+                            nodes[j+1].innerHTML =value1;
+                        }
+                    })(j),1000)
+                }
+            }
+        }
+		
+		leftIn.onclick=function(){
+			addNum("left");
+		}
+		rightIn.onclick=function(){
+			addNum("right");
+		}
+		leftOut.onclick=function(){
+			removeNum(-1,"left");
+		}
+		rightOut.onclick=function(){
+			removeNum(-1,"right");
+		}
+		queue.onclick=function(){
+			removeNum(event.target);
+		}
+		sortQ.onclick=function(){
+		    sortQueue();
+        }
+		
+    </script>
+
+</body>
+</html>
