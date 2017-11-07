@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>任务四：基础JavaScript练习（一）</title>
+<style type="text/css">
+input+input:hover{
+	color:#FFF;
+	background:#F00;
+	border-color:#F00;
+}
+#container li{
+	display:inline-block;
+	text-align:center;
+	font-size:30px;
+	color:#FFF;
+	padding:10px;
+	margin:10px;
+	height:30px;
+	line-height:30px;
+	background:#F00;
+	cursor:pointer;
+}
+#container li:hover{
+	background:#FFF;
+	color:#F00;
+}
+</style>
+</head>
+
+<body>
+	<input type="text" name="number" id="inputNum" />
+    <input type="button" id="btnLeftIn" value="左侧入" />
+    <input type="button" id="btnRightIn" value="右侧入" />
+    <input type="button" id="btnLeftOut" value="左侧出" />
+    <input type="button" id="btnRightOut" value="右侧出" />  
+    <ul id="container">
+    
+    </ul> 
+    
+    <script type="text/javascript">
+		var inputNum=document.getElementById("inputNum");
+		var outputNum=document.getElementById("container");
+		var btnLeftIn=document.getElementById("btnLeftIn");
+		var btnRightIn=document.getElementById("btnRightIn");
+		var btnLeftOut=document.getElementById("btnLeftOut");
+		var btnRightOut=document.getElementById("btnRightOut");
+		
+		
+		function addNum(direction){
+			if(!inputNum.value){
+				alert("请输入数字");//输入框为空，按钮点击时，跳出提示框
+				inputNum.focus();
+			}
+			else if(isNaN(inputNum.value)){
+				alert("只能输入数字");//输入框为非数字，按钮点击时，跳出提示框
+                inputNum.value="";
+                inputNum.focus();
+			}
+			else{
+				var newLi=document.createElement("li");
+				newLi.innerHTML=inputNum.value;
+				if(direction=="left"){
+					outputNum.insertBefore(newLi,outputNum.firstChild);//将生成的li元素从前方放入
+				}
+				else if(direction=="right"){
+					outputNum.appendChild(newLi);//将生成的li元素从末尾放入
+				}
+			}
+		}
+		
+		function removeNum(node,direction){
+			if(!outputNum){
+				alert("队列已空");
+                return false;
+			}
+			else{
+				if(direction=="left"){
+					alert("删除数字："+outputNum.firstChild.innerHTML+"！");
+					outputNum.removeChild(outputNum.firstChild);
+				}
+				else if(direction=="right"){
+					alert("删除数字："+outputNum.lastChild.innerHTML+"！");
+					outputNum.removeChild(outputNum.lastChild);
+				}
+				else{
+					alert("删除数字："+outputNum.removeChild(node).innerHTML+"！");
+				}
+			}
+		}
+		
+		btnLeftIn.onclick=function(){
+			addNum("left");
+		}
+		btnRightIn.onclick=function(){
+			addNum("right");
+		}
+		btnLeftOut.onclick=function(){
+			removeNum(-1,"left");
+		}
+		btnRightOut.onclick=function(){
+			removeNum(-1,"right");
+		}
+		outputNum.onclick=function(){
+			removeNum(event.target);
+		}
+    </script>
+    
+</body>
+</html>

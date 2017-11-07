@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>任务六：基础JavaScript练习（三）</title>
+<style type="text/css">
+#inputText{
+	resize:none;
+	margin-top:10px;
+	display:block;
+	margin-bottom:10px;
+}
+input+input:hover{
+	color:#FFF;
+	background:#F00;
+	border-color:#F00;
+}
+#container{
+	overflow:auto;
+	margin:10px;
+	padding:0;
+	height:100px;
+	width:1260px;
+}
+#container li{
+	display:inline-block;
+	text-align:center;
+	font-size:30px;
+	color:#FFF;
+	padding:5px;
+	margin:5px;
+	height:30px;
+	line-height:30px;
+	background:#F00;
+	cursor:pointer;
+}
+#container li:hover{
+	background:#FFF;
+	color:#F00;
+}
+</style>
+</head>
+
+<body>
+	<textarea type="text" rows="6" cols="30" id="inputText" placeholder="请输入要加入的内容" ></textarea>
+    <input type="button" id="insert" value="插入" /> 
+    <ul id="container"></ul> 
+    
+    <input type="text" id="keyWord" placeholder="请输入查询的内容"/>
+    <input type="button" id="search" value="查询" />
+    
+    
+    <script type="text/javascript">
+		var text=document.getElementById("inputText");
+		var container=document.getElementById("container");
+		
+		var data=[];
+		
+		window.onload=function(){
+			var insert=document.getElementById("insert");
+			
+			var keyWord=document.getElementById("keyWord");
+			var searchNow=document.getElementById("search");
+			
+			
+			function addText(){
+				if(!text.value){
+					alert("请输入内容");//输入框为空，按钮点击时，跳出提示框
+					text.focus();
+				}
+				else{
+					var words=text.value;
+					words=words.replace(/[^0-9a-zA-Z]/g, " ");//用正则选出非数字和非字母的内容并用空格代替
+					var arr=words.split(' ');//通过空格将内容分成数组
+					for(var i=0; i<arr.length; i++){
+						var newLi=document.createElement("li");
+						newLi.innerHTML=arr[i];
+						container.appendChild(newLi,container.firstChild);//将生成的li元素从前方放入
+						data.push(arr[i]);
+					}
+				
+				}
+			}
+			
+			function removeText(node){
+				alert("删除数字："+container.removeChild(node).innerHTML+"！");
+			}
+			
+			function searchText(){
+				if(!keyWord.value){
+					alert("请输入查询内容");
+					keyWord.focus();
+				}
+				else{
+				//console.log(container.childNodes);
+					for(var i=0; i<container.childNodes.length; i++){					
+						if(data[i].indexOf(keyWord)){
+							container.childNodes[i].style.color="yellow";
+						}
+					}
+				}
+			}
+			
+			insert.onclick=function(){
+				addText();
+			}
+			container.onclick=function(){
+				removeText(event.target);
+			}
+			searchNow.onclick=function(){
+				searchText();
+			}
+			
+		}
+		
+
+    </script>
+    
+</body>
+</html>

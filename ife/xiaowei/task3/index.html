@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>任务三：三栏式布局</title>
+</head>
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;
+}
+div{
+	border:1px solid #ccc;
+	margin:20px;
+	background-color:#eee;
+}
+
+/*position布局*/
+.p_achieve{
+	position:relative;
+	min-height:470px;/*460+10*/
+}
+.p_left{
+	width:200px;
+}
+.p_left,.p_right{
+	position:absolute;
+	background-color:#FFF;
+	top:0;
+}
+.p_right{
+	right:0;
+}
+.p_left div,.p_right div{
+	width:80px;
+	height:80px;
+}
+
+.p_center{
+	margin:20px 160px 20px 240px;
+	background-color:#FFF;
+	padding:20px;
+	line-height:30px;
+}
+.p_center h3{
+	margin-bottom:20px;
+}
+.p_center p{
+	font-size:14px;
+}
+
+
+/*float布局*/
+.f_achieve:after{
+	clear:both;
+	content:'';
+	display:block;
+	visibility: hidden;
+}
+.f_left{
+	width:200px;
+	background:#FFF;
+	float:left;
+}
+.f_left div,.f_right div{
+	width:80px;
+	height:80px;
+}
+.f_center{
+	margin:20px 160px 20px 240px;
+	background-color:#FFF;
+	padding:20px;
+	line-height:30px;
+}
+.f_center h3{
+	margin-bottom:20px;
+}
+.f_center p{
+	font-size:14px;
+}
+.f_right{
+	float:right;
+	background-color:#fff;
+	width:120px;
+}
+</style>
+<body>
+	<!--通过position实现-->
+	<div class="p_achieve">
+    	<div class="p_left">
+        	<div>
+            </div>
+        </div>
+        
+    	<div class="p_center">
+        	<h3>这里是内容标题</h3>
+            <h3>随便写点啥吧随便写点啥吧随便写点啥吧随便写点啥吧</h3>
+        	<p>bilibili是国内知名的视频弹幕网站,这里有最及时的动漫新番,最棒的ACG氛围,最有创意的Up主。大家可以在这里找到许多欢乐。bilibili是国内知名的视频弹幕网站,这里有最及时的动漫新番,最棒的ACG氛围,最有创意的Up主。大家可以在这里找到许多欢乐。bilibili是国内知名的视频弹幕网站,这里有最及时的动漫新番,最棒的ACG氛围,最有创意的Up主。大家可以在这里找到许多欢乐。bilibili是国内知名的视频弹幕网站,这里有最及时的动漫新番,最棒的ACG氛围,最有创意的Up主。大家可以在这里找到许多欢乐。bilibili是国内知名的视频弹幕网站,这里有最及时的动漫新番,最棒的ACG氛围,最有创意的Up主。大家可以在这里找到许多欢乐。</p>
+        </div>
+    	
+        <div class="p_right">
+        	<div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    
+    <!--通过float实现-->
+    <div class="f_achieve">
+    	<div class="f_left">
+        	<div>
+            </div>
+        </div>
+        
+    	
+    	
+        <div class="f_right">
+        	<div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    	
+        <div class="f_center">
+        	<h3>这里是内容标题</h3>
+            <h3>随便写点啥吧随便写点啥吧随便写点啥吧随便写点啥吧</h3>
+        	<p>bilibili是国内知名的视频弹幕网站,这里有最及时的动漫新番,最棒的ACG氛围,最有创意的Up主。大家可以在这里找到许多欢乐。bilibili是国内知名的视频弹幕网站,这里有最及时的动漫新番,最棒的ACG氛围,最有创意的Up主。大家可以在这里找到许多欢乐。bilibili是国内知名的视频弹幕网站,这里有最及时的动漫新番,最棒的ACG氛围,最有创意的Up主。大家可以在这里找到许多欢乐。bilibili是国内知名的视频弹幕网站,这里有最及时的动漫新番,最棒的ACG氛围,最有创意的Up主。大家可以在这里找到许多欢乐。bilibili是国内知名的视频弹幕网站,这里有最及时的动漫新番,最棒的ACG氛围,最有创意的Up主。大家可以在这里找到许多欢乐。</p>
+            
+        </div>
+        
+    </div>
+</body>
+</html>
