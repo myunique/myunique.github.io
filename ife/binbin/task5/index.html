@@ -124,10 +124,10 @@ div{
                         var value2=nodes[j+1].innerHTML;
                         if(parseInt(nodes[j].style.height) > parseInt(nodes[j+1].style.height)){
                             nodes[j].style.height=value2*2+"px";
-                            nodes[j].style.marginTop=(100-value2*2)+"px";
+                            nodes[j].style.marginTop=(200-value2*2)+"px";
                             nodes[j].innerHTML =value2;
                             nodes[j+1].style.height=value1*2+"px";
-                            nodes[j+1].style.marginTop=(100-value1*2)+"px";
+                            nodes[j+1].style.marginTop=(200-value1*2)+"px";
                             nodes[j+1].innerHTML =value1;
                         }
                     })(j),1000)
