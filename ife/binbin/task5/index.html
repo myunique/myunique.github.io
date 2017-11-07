@@ -4,12 +4,7 @@
 <meta charset="utf-8">
 <title>任务五：基础JavaScript练习（二）</title>
 <style type="text/css">
-ul{
-	margin:10px;
-	padding:0;
-	height:200px;
-	width:1260px;
-}
+
 div{
 	display:inline-block;
 	width:5px;
@@ -17,16 +12,23 @@ div{
 	margin-left:5px;
 	border-left:1px solid #ccc;
 }
+#queue{
+    margin:10px;
+    padding:0;
+    height:200px;
+    width:1260px;
+}
 #queue li{
 	display:inline-block;
 	text-align:center;
+    margin-right: 1px;
 	width:20px;
 	height:20px;
-	margin:1px;
 	font-size:10px;
 	color:#FFF;
 	background:#F00;
 	cursor:pointer;
+    vertical-align: bottom;
 }
 
 </style>
@@ -71,6 +73,7 @@ div{
 				var newLi=document.createElement("li");
 				newLi.innerHTML=inputNum.value;
 				newLi.style.height=inputNum.value*2+"px";
+				newLi.style.marginTop=200-inputNum.value*2 + 'px';
 				if(direction==="left"){
 					queue.insertBefore(newLi,queue.firstChild);//将生成的li元素从前方放入
 				}
@@ -100,6 +103,37 @@ div{
 				}
 			}
 		}
+
+		function sortQueue() {
+            var queue=document.getElementById("queue");
+            var len=queue.childNodes.length;
+            if(len==0){
+                alert("队列已空");
+                return false;
+            }
+            else if(len==1){
+                return;
+            }
+            for(var i=0; i<len; i++){
+                for(var j=0; j<len-i-1; j++){
+                    setTimeout((function (j) {      //闭包
+                        console.log(j);
+                        var queue=document.getElementById("queue");
+                        var nodes=queue.childNodes;
+                        var value1=nodes[j].innerHTML;
+                        var value2=nodes[j+1].innerHTML;
+                        if(parseInt(nodes[j].style.height) > parseInt(nodes[j+1].style.height)){
+                            nodes[j].style.height=value2*2+"px";
+                            nodes[j].style.marginTop=(100-value2*2)+"px";
+                            nodes[j].innerHTML =value2;
+                            nodes[j+1].style.height=value1*2+"px";
+                            nodes[j+1].style.marginTop=(100-value1*2)+"px";
+                            nodes[j+1].innerHTML =value1;
+                        }
+                    })(j),1000)
+                }
+            }
+        }
 		
 		leftIn.onclick=function(){
 			addNum("left");
@@ -116,6 +150,9 @@ div{
 		queue.onclick=function(){
 			removeNum(event.target);
 		}
+		sortQ.onclick=function(){
+		    sortQueue();
+        }
 		
     </script>
 
