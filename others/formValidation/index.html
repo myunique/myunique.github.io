@@ -51,8 +51,11 @@
         var btn = document.getElementById('loginEmail');
         btn.onclick = function () {
             checkNull();
-            if (input[0].nextSibling == null){  //如果未填写则不会检测email格式
+            if (input[0].nextSibling == null) {  //如果邮箱未填写则不会检测email格式
                 checkEmail();
+            }
+            if (input[0].nextSibling == null) {  //如果密码未填写则不会检测密码格式
+                checkPassword();
             }
             return false;
         }
@@ -90,10 +93,21 @@
             if (apos < 1 || dotpos - apos < 2) {
                 error(input[0], "请填写正确的邮箱");
                 return false;
-            }
-            else {
+            } else {
                 return true;
             }
+        }
+
+        //校验密码：只能输入6-20位字母、数字、下划线
+        function checkPassword() {
+            var reg = new RegExp(/^[a-zA-Z]\w{5,17}$/);
+            if (!reg.test(input[1].value)) {
+                error(input[1], "请输入6-18位字母、数字、下划线");
+                return false;
+            } else {
+                return true;
+            }
+
         }
 
         //根据参数判断消除报错状态还是增加报错状态
