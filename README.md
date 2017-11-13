@@ -1,4 +1,4 @@
-# mooc
+# myunique.github.io
 
 
 some exercise code
@@ -28,8 +28,8 @@ some exercise code
      * [simpleTabs](https://myunique.github.io/mooc/simpleTabs)
      * [focusMapCarousel](https://myunique.github.io/mooc/focusMapCarousel/index.html)
      * [formValidation](https://myunique.github.io/others/formValidation)
-     * [airQualitySort](https://myunique.github.io/ife/binin/task3)
-     * [queueSort](https://myunique.github.io/ife/binin/task5)
+     * [airQualitySort](https://myunique.github.io/ife/binbin/task3)
+     * [queueSort](https://myunique.github.io/ife/binbin/task5)
 
  + jQuery
      * [focusMapCarousel](https://myunique.github.io/mooc/focusMapCarousel/index-jq.html)
