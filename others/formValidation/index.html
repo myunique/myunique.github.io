@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <link rel="stylesheet" href="style/bootstrap-theme.min.css">
+    <style type="text/css">
+        .main {
+            width: 400px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <form class="form-horizontal" id="EmailForm" role="form">
+        <div class="form-group">
+            <label for="inputEmail" class="col-sm-2 control-label">邮箱</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="inputEmail" placeholder="请输入您的邮箱地址">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword" placeholder="请输入您的邮箱密码">
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> 记住密码
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" id="loginEmail" class="btn btn-default">进入邮箱</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    (function () {
+        var form = document.getElementById('EmailForm');
+        var input = form.getElementsByTagName('input');
+        var btn = document.getElementById('loginEmail');
+        btn.onclick = function () {
+            checkNull();
+            if (input[0].nextSibling == null){  //如果未填写则不会检测email格式
+                checkEmail();
+            }
+            return false;
+        }
+
+        function init() {
+            for (var i = 0; i < input.length - 1; i++) {
+                input[i].onfocus = function () {  //输入框得到焦点会将报错状态取消
+                    error(this, '', 1);
+                }
+            }
+        }
+
+        init();
+
+        function checkNull() {
+            for (var j = 0; j < input.length - 1; j++) {
+                if (input[j].nextSibling == null) {      //已经报错的不会再重复检测
+                    for (var i = 0; i < input.length - 1; i++) {
+                        if (input[i].value == null || input[i].value == "") {  //如果未填写将会报错
+                            error(input[i], "不能为空");
+                            input[i].className.indexOf('error') == -1 && (input[i].className += ' error');
+                        }
+                    }
+                }
+            }
+
+        }
+
+        // 检查输入的数据是否符合电子邮件地址的基本语法。
+        // 输入的数据必须包含 @ 符号和点号(.)。
+        // 同时，@ 不可以是邮件地址的首字符，并且 @ 之后需有至少一个点号
+        function checkEmail() {
+            var apos = input[0].value.indexOf("@")
+            var dotpos = input[0].value.lastIndexOf(".")
+            if (apos < 1 || dotpos - apos < 2) {
+                error(input[0], "请填写正确的邮箱");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        //根据参数判断消除报错状态还是增加报错状态
+        function error(o, txt, show) {
+            //消除报错状态
+            if (arguments.length == 3 && show) {
+                if (o.nextSibling != null) {
+                    o.parentNode.parentNode.className = "form-group";
+                    o.parentNode.removeChild(o.parentNode.lastChild);
+                }
+            } else { //增加报错状态
+                var oSpan = document.createElement("span");
+                oSpan.className = "help-block";
+                oSpan.innerHTML = txt;
+                o.parentNode.appendChild(oSpan);
+                o.parentNode.parentNode.className = "form-group has-error";
+            }
+        }
+    }());
+</script>
+</body>
+</html>
