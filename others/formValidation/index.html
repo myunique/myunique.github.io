@@ -76,20 +76,17 @@
 
 
         function checkEmail() {
-            var apos = input[0].value.indexOf("@");
-            var dotpos = input[0].value.lastIndexOf(".");
+            var reg=new RegExp(/^\w+@\w+(\.[a-zA-Z]{2,3}){1,2}$/);
 
             init(input[0]);
 
-            //检查是否为空
+            // 检查是否为空
             if (input[0].value == null || input[0].value == "") {
                 error(input[0], "邮箱不能为空");
                 return false;
             }
             // 检查输入的数据是否符合电子邮件地址的基本语法。
-            // 输入的数据必须包含 @ 符号和点号(.)。
-            // 同时，@ 不可以是邮件地址的首字符，并且 @ 之后需有至少一个点号
-            if (apos < 1 || dotpos - apos < 2) {
+            if (!reg.test(input[0].value)) {
                 error(input[0], "请填写正确的邮箱");
                 return false;
             }
@@ -99,16 +96,17 @@
 
 
         function checkPassword() {
+            // 只能输入6-20位字母、数字、下划线
             var reg = new RegExp(/^[a-zA-Z]\w{5,17}$/);
 
             init(input[1]);
 
-            //检查是否为空
+            // 检查是否为空
             if (input[1].value == null || input[1].value == "") {
                 error(input[1], "密码不能为空");
                 return false;
             }
-            //校验密码格式：只能输入6-20位字母、数字、下划线
+            // 校验密码格式
             if (!reg.test(input[1].value)) {
                 error(input[1], "请输入6-18位字母、数字、下划线");
                 return false;

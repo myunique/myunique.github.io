@@ -1,209 +1,239 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>任务五：零基础HTML及CSS编码（二）</title>
-<style type="text/css">
-*{
-	margin:0;
-	padding:0;
-	box-sizing:border-box;
-}
-body{
-	font-size:15px;
-	font-family:"黑体";
-	background-color:#dedede;
-	position:relative;	
-}
-.clearfix:after{
-	content:"";
-	clear:both;
-	display:block;
-}
-header{
-	background:#333;
-	height:60px;
-	width:100%;
-	overflow:hidden;
-}
-.logo{
-	float:left;
-	margin-left:15px;
-}
-.nav{
-	float:right;
-	margin-top:20px;
-}
-.nav li{
-	float:left;
-	margin-right:25px;
-}
-.nav li a{
-	color:#fff;
-	font-size:12px;
-	text-decoration:none;
-}
-.nav li:last-child a{
-color: #A5AAB0;
-}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>任务五：零基础HTML及CSS编码（二）</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.article{
-	position:absolute;
-}
-section{
-	margin:20px;
-	padding:35px 20px;
-	border:1px solid #cbcbcb;
-	box-shadow:2px 2px 0 0 #848484;
-	background-color:#fff;
-	margin-right:400px;
-}
-section h3{
-	color:#6d6d6d;
-	font-size:16px;
-	margin:15px 0;
-}
-.author{
-	display:block;
-	font-size:12px;
-	color:#6d6d6d;
-	margin-bottom:15px;
-}
-section>p{
-	text-indent:2em;
-	line-height:1.5em;
-}
-section img{
-	width:25%;
-	margin:15px 0;
-}
-.listPro{
-	list-style:none;
-	margin-left:15px;
-}
-.listPro li{
-	line-height:1.5em;
-}
-.picBox{
-	overflow:hidden;
-}
-.picBox div{
-	float:left;
-	border:1px solid #aaa;
-	width:120px;
-	font-size:14px;
-	text-align:center;
-	padding:10px;
-	margin:20px 0 0 30px;
-}
-.picBox img{
-	width:100px;
-	display:block;
-	margin-bottom:0;
-}
-section ol{
-	margin-left:40px;
-	margin-bottom:15px;
-	line-height:25px;
-}
-table{
-	width:100%;
-	border: 1px solid #ccc;
-	border-collapse:collapse;
-	text-align:left;
-	font-size:14px;
-}
-table td,
-table th{
-	padding:3px;	
-}
-table th{
-	background-color:#333;
-	color:#fff;
-}
-table tr:last-child{
-	background-color:#ccc;
-	font-weight:bold;
-}
-aside{
-	margin:20px;
-	border:1px solid #cbcbcb;
-	padding:25px 20px;
-	background-color:#FFF;
-	box-shadow:2px 2px 0 0 #848484;
-	width:360px;
-	float:right;
-}
-aside h4{
-	font-size:16px;
-	border-left:3px solid #ccc;
-	padding:10px;
-}
-aside form{
-	margin-top:20px;
-	font-size:14px;
-}
-form label{
-	float:left;
-	text-align:right;
-	width:35%;
-	padding-right:20px;
-}
-form input,
-form select{
-	margin-bottom:10px;
-}
-form div{
-	padding-top:3px;
-}
-.email input,
-.pwd1 input,
-.pwd2 input{
-	width: 140px;
-}
-form p{
-	margin-left:35%;
-	font-size:12px;
-	color:#aaa;
-	padding-bottom:20px;
-}
-form textarea{
-	font-size:15px;
-	width:65%;
-	height:100px;
-}
+        body {
+            font-size: 15px;
+            font-family: "黑体";
+            background-color: #dedede;
+            position: relative;
+        }
 
-form button{
-	width:100%;
-	padding:10px;
-	margin-top:10px;
-	font-size:16px;
-	color:#FFF;
-	background-color:#23d;
-	border-radius:10px;
-	cursor:pointer;
-	border:none;
-}
-footer{
-	background:#000;
-	color:#FFF;
-	font-size:12px;
-	height:100%;
-	text-align:center;
-	padding:20px;
-}
+        .clearfix:after {
+            content: "";
+            clear: both;
+            display: block;
+        }
 
-	
-	
-	
-	
-</style>
+        header {
+            background: #333;
+            height: 60px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .logo {
+            float: left;
+            margin-left: 15px;
+        }
+
+        .nav {
+            float: right;
+            margin-top: 20px;
+        }
+
+        .nav li {
+            float: left;
+            margin-right: 25px;
+        }
+
+        .nav li a {
+            color: #fff;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .nav li:last-child a {
+            color: #A5AAB0;
+        }
+
+        .article {
+            position: absolute;
+        }
+
+        section {
+            margin: 20px;
+            padding: 35px 20px;
+            border: 1px solid #cbcbcb;
+            box-shadow: 2px 2px 0 0 #848484;
+            background-color: #fff;
+            margin-right: 400px;
+        }
+
+        section h3 {
+            color: #6d6d6d;
+            font-size: 16px;
+            margin: 15px 0;
+        }
+
+        .author {
+            display: block;
+            font-size: 12px;
+            color: #6d6d6d;
+            margin-bottom: 15px;
+        }
+
+        section > p {
+            text-indent: 2em;
+            line-height: 1.5em;
+        }
+
+        section img {
+            width: 25%;
+            margin: 15px 0;
+        }
+
+        .listPro {
+            list-style: none;
+            margin-left: 15px;
+        }
+
+        .listPro li {
+            line-height: 1.5em;
+        }
+
+        .picBox {
+            overflow: hidden;
+        }
+
+        .picBox div {
+            float: left;
+            border: 1px solid #aaa;
+            width: 120px;
+            font-size: 14px;
+            text-align: center;
+            padding: 10px;
+            margin: 20px 0 0 30px;
+        }
+
+        .picBox img {
+            width: 100px;
+            display: block;
+            margin-bottom: 0;
+        }
+
+        section ol {
+            margin-left: 40px;
+            margin-bottom: 15px;
+            line-height: 25px;
+        }
+
+        table {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        table td,
+        table th {
+            padding: 3px;
+        }
+
+        table th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        table tr:last-child {
+            background-color: #ccc;
+            font-weight: bold;
+        }
+
+        aside {
+            margin: 20px;
+            border: 1px solid #cbcbcb;
+            padding: 25px 20px;
+            background-color: #FFF;
+            box-shadow: 2px 2px 0 0 #848484;
+            width: 360px;
+            float: right;
+        }
+
+        aside h4 {
+            font-size: 16px;
+            border-left: 3px solid #ccc;
+            padding: 10px;
+        }
+
+        aside form {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        form label {
+            float: left;
+            text-align: right;
+            width: 35%;
+            padding-right: 20px;
+        }
+
+        form input,
+        form select {
+            margin-bottom: 10px;
+        }
+
+        form div {
+            padding-top: 3px;
+        }
+
+        .email input,
+        .pwd1 input,
+        .pwd2 input {
+            width: 140px;
+        }
+
+        form p {
+            margin-left: 35%;
+            font-size: 12px;
+            color: #aaa;
+            padding-bottom: 20px;
+        }
+
+        form textarea {
+            font-size: 15px;
+            width: 65%;
+            height: 100px;
+        }
+
+        form button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #FFF;
+            background-color: #23d;
+            border-radius: 10px;
+            cursor: pointer;
+            border: none;
+        }
+
+        footer {
+            background: #000;
+            color: #FFF;
+            font-size: 12px;
+            height: 100%;
+            text-align: center;
+            padding: 20px;
+        }
+
+
+    </style>
 </head>
 
 <body>
 <header>
-	
-    <ul class="nav" >
+
+    <ul class="nav">
         <li><a href="#">导航链接一</a></li>
         <li><a href="#">导航链接二</a></li>
         <li><a href="#">导航链接三</a></li>
@@ -211,21 +241,23 @@ footer{
     </ul>
 </header>
 <main>
-	<div class="article">
+    <div class="article">
         <section>
             <h2>文章一级标题</h2>
             <h3>文章二级标题</h3>
             <span class="author">文章作者 文章发表时间</span>
-            <p>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，<br/>这是一个很长的段落这是一个很长的段落这是一个很长的段落，<a href="#">这里有一个链接链接到http://ife.baidu.com</a>这是一个很长的段落，这是一个很长的段落</p>
+            <p>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，<br/>这是一个很长的段落这是一个很长的段落这是一个很长的段落，<a href="#">这里有一个链接链接到http://ife.baidu.com</a>这是一个很长的段落，这是一个很长的段落
+            </p>
             <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2081230641,1197862362&fm=27&gp=0.jpg"/>
             <p>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，</p>
         </section>
-        
+
         <section>
             <h2>文章一级标题</h2>
             <h3>文章二级标题</h3>
             <span class="author">文章作者 文章发表时间</span>
-            <p>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，<a href="#">这里有一个链接链接到http://ife.baidu.com</a>这是一个很长的段落，这是一个很长的段落</p>
+            <p>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，<a href="#">这里有一个链接链接到http://ife.baidu.com</a>这是一个很长的段落，这是一个很长的段落
+            </p>
             <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2081230641,1197862362&fm=27&gp=0.jpg"/>
             <ul class="listPro">
                 <li>列表项目一</li>
@@ -233,7 +265,7 @@ footer{
                 <li>列表项目三</li>
             </ul>
         </section>
-        
+
         <section class="picBox">
             <h2>图片</h2>
             <div>
@@ -277,7 +309,7 @@ footer{
                 <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2081230641,1197862362&fm=27&gp=0.jpg"/>
             </div>
         </section>
-        
+
         <section>
             <h2>最后一篇文章一级标题</h2>
             <h3>文章二级标题</h3>
@@ -314,17 +346,20 @@ footer{
                     <td>表内容单元格</td>
                     <td><a href="#">操作</a></td>
                 </tr>
-                <tr><td>总计</td><td colspan="2">1000</td></tr>
+                <tr>
+                    <td>总计</td>
+                    <td colspan="2">1000</td>
+                </tr>
             </table>
         </section>
-        
+
         <footer>
-    	<p>版权所有©</p>
-   		</footer>
+            <p>版权所有©</p>
+        </footer>
     </div>
     <aside>
-    	<h4>这里以后是一个侧栏，这是侧栏的标题</h3>
-        <form>
+        <h4>这里以后是一个侧栏，这是侧栏的标题</h4>
+        <form action="#" method="#">
             <div class="email">
                 <label for="email">请输入邮箱地址</label>
                 <input type="email" id="email" value="这是一个文本输入框"/>
@@ -334,16 +369,17 @@ footer{
                 <label for="pwd">请输入密码</label>
                 <input type="password" id="pwd" value="随便打点啥反正看不到"/>
             </div>
-            <div class="pwd2"> 
+            <div class="pwd2">
                 <label for="pwd_again">请重复输入密码</label>
-                <input type="password" id="pwd_again" value="随便打点啥反正看不到" />
+                <input type="password" id="pwd_again" value="随便打点啥反正看不到"/>
                 <p>密码请为6-16位英文数字</p>
             </div>
             <div class="sex">
                 <label for="sex">性别</label>
-                <input type="radio" id="sex" value="男" name="sex" checked="checked" />男
+                <input type="radio" id="sex" value="男" name="sex" checked="checked"/>男
                 <input type="radio" value="女" name="sex"/>女
-            <div class="city">    
+            </div>
+            <div class="city">
                 <label>城市</label>
                 <select>
                     <option>北京</option>
@@ -351,23 +387,20 @@ footer{
                     <option>广州</option>
                     <option>深圳</option>
                 </select>
-			</div>
-            <div class="hobby">  
-                <label for="hobby">爱好</label>
+            </div>
+            <div class="hobby">
+                <label>爱好</label>
                 <input type="checkbox" value="运动" name="hobby"/>运动
                 <input type="checkbox" value="艺术" name="hobby"/>艺术
                 <input type="checkbox" value="科学" name="hobby"/>科学
-         	</div>  
-            <div> 
+            </div>
+            <div>
                 <label>个人描述</label>
                 <textarea placeholder="这是一个多行输入框"></textarea>
                 <button type="submit">确认提交</button>
             </div>
         </form>
     </aside>
-
-	
-
 </main>
 
 </body>

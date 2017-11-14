@@ -83,6 +83,9 @@ input+input:hover{
 			}
 			
 			function searchText(){
+                for(var i=0; i<container.childNodes.length; i++){
+                    container.childNodes[i].style.color="white";
+                }
 				if(!keyWord.value){
 					alert("请输入查询内容");
 					keyWord.focus();
@@ -90,7 +93,7 @@ input+input:hover{
 				else{
 				//console.log(container.childNodes);
 					for(var i=0; i<container.childNodes.length; i++){
-						if(data[i].indexOf(keyWord)){
+						if(!data[i].indexOf(keyWord.value)){
 							container.childNodes[i].style.color="yellow";
 						}
 					}

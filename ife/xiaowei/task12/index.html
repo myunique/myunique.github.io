@@ -1,179 +1,190 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>任务十二：学习CSS 3的新特性</title>
-<style type="text/css">
-*{
-	margin:0;
-	padding:0;
-}
-ul,ol{
-	list-style:none;
-}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>任务十二：学习CSS 3的新特性</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
+        ul, ol {
+            list-style: none;
+        }
 
-.table{
-	margin:20px auto;
-}
-.table tr th{
-	margin:20px auto;
-	background:#000;
-	color:#fff;
-	text-align:left;
-}
-.table tr:nth-child(-n+4){
-	color:#f00;
-}
-.table tr:nth-child(odd){
-	background:#ccc;
-}
+        .table {
+            margin: 20px auto;
+        }
 
+        .table tr th {
+            margin: 20px auto;
+            background: #000;
+            color: #fff;
+            text-align: left;
+        }
 
-.input{
-	margin:30px auto;
-	display:block;
-	width:100px;
-	transition:width .2s;
-}
-.input:focus{
-	width:200px;
-	box-shadow:0 0 10px #6aafff;
-}
+        .table tr:nth-child(-n+4) {
+            color: #f00;
+        }
 
+        .table tr:nth-child(odd) {
+            background: #ccc;
+        }
 
+        .input {
+            margin: 30px auto;
+            display: block;
+            width: 100px;
+            transition: width .2s;
+        }
 
-.scoll{
-	width: 250px;
-	height:150px;
-	position: relative;
-	margin: 0 auto;
-	overflow:hidden;
-}
-.scoll ul li{
-	position:absolute;
-	width:250px;
-	height:150px;
-}
-.scoll ul li:nth-child(1){
-	background:#f00;
-}
-.scoll ul li:nth-child(2){
-	background:#0f0;
-}
-.scoll ul li:nth-child(3){
-	background:#00f;
-}
-.scoll ul li:target{
-	z-index:2;
-	animation:scroll 0.5s linear;
-}
-@keyframes scroll{
-	from{
-		left:-100%;
-	}
-	to{
-		left:0%;
-	}
-}
-ol{
-	cursor:pointer;
-	position:absolute;
-	bottom:0;
-	right:0;
-	z-index:3;
-}
-ol li{
-	float:left;
-	height:25px;
-	width:25px;
-	text-align:center;
-	line-height:25px;
-	background:#CCC;
-	opacity:0.5;
-	margin-left:2px;
-}
-a{
-	text-decoration:none;
-	color:#FFF;
-}
+        .input:focus {
+            width: 200px;
+            box-shadow: 0 0 10px #6aafff;
+        }
 
-</style>
+        .scoll {
+            width: 250px;
+            height: 150px;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .scoll ul li {
+            position: absolute;
+            width: 250px;
+            height: 150px;
+        }
+
+        .scoll ul li:nth-child(1) {
+            background: #f00;
+        }
+
+        .scoll ul li:nth-child(2) {
+            background: #0f0;
+        }
+
+        .scoll ul li:nth-child(3) {
+            background: #00f;
+        }
+
+        .scoll ul li:target {
+            z-index: 2;
+            animation: scroll 0.5s linear;
+        }
+
+        @keyframes scroll {
+            from {
+                left: -100%;
+            }
+            to {
+                left: 0%;
+            }
+        }
+
+        ol {
+            cursor: pointer;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: 3;
+        }
+
+        ol li {
+            float: left;
+            height: 25px;
+            width: 25px;
+            text-align: center;
+            line-height: 25px;
+            background: #CCC;
+            opacity: 0.5;
+            margin-left: 2px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #FFF;
+        }
+
+    </style>
 </head>
 
 <body>
-	<table class="table">
-    	<tr>
-			<th>排名</th>
-			<th>网站</th>
-			<th>热度</th>
-		</tr>
-		<tr>
-			<td>1.</td>
-			<td>百度前端技术学院</td>
-			<td>13000</td>
-		</tr>
-		<tr>
-			<td>2.</td>
-			<td>百度前端技术学院</td>
-			<td>12000</td>
-		</tr>
-		<tr>
-			<td>3.</td>
-			<td>百度前端技术学院</td>
-			<td>11000</td>
-		</tr>
-		<tr>
-			<td>4.</td>
-			<td>百度前端技术学院</td>
-			<td>10000</td>
-		</tr>
-		<tr>
-			<td>5.</td>
-			<td>百度前端技术学院</td>
-			<td>9000</td>
-		</tr>
-		<tr>
-			<td>6.</td>
-			<td>百度前端技术学院</td>
-			<td>8000</td>
-		</tr>
-		<tr>
-			<td>7.</td>
-			<td>百度前端技术学院</td>
-			<td>7000</td>
-		</tr>
-		<tr>
-			<td>8.</td>
-			<td>百度前端技术学院</td>
-			<td>6000</td>
-		</tr>
-		<tr>
-			<td>9.</td>
-			<td>百度前端技术学院</td>
-			<td>5000</td>
-		</tr>
-		<tr>
-			<td>10.</td>
-			<td>百度前端技术学院</td>
-			<td>4000</td>
-		</tr>
-    </table>
-    
-    <input type="text" class="input" />
-    
-    <div class="scoll">
-    	<ul>
-        	<li id="li1"></li>
-            <li id="li2"></li>
-            <li id="li3"></li>
-        </ul>
-        <ol>
-        	<li><a href="#li1">1</a></li>
-            <li><a href="#li2">2</a></li>
-            <li><a href="#li3">3</a></li>
-        </ol>
-    </div>
-    
+<table class="table">
+    <tr>
+        <th>排名</th>
+        <th>网站</th>
+        <th>热度</th>
+    </tr>
+    <tr>
+        <td>1.</td>
+        <td>百度前端技术学院</td>
+        <td>13000</td>
+    </tr>
+    <tr>
+        <td>2.</td>
+        <td>百度前端技术学院</td>
+        <td>12000</td>
+    </tr>
+    <tr>
+        <td>3.</td>
+        <td>百度前端技术学院</td>
+        <td>11000</td>
+    </tr>
+    <tr>
+        <td>4.</td>
+        <td>百度前端技术学院</td>
+        <td>10000</td>
+    </tr>
+    <tr>
+        <td>5.</td>
+        <td>百度前端技术学院</td>
+        <td>9000</td>
+    </tr>
+    <tr>
+        <td>6.</td>
+        <td>百度前端技术学院</td>
+        <td>8000</td>
+    </tr>
+    <tr>
+        <td>7.</td>
+        <td>百度前端技术学院</td>
+        <td>7000</td>
+    </tr>
+    <tr>
+        <td>8.</td>
+        <td>百度前端技术学院</td>
+        <td>6000</td>
+    </tr>
+    <tr>
+        <td>9.</td>
+        <td>百度前端技术学院</td>
+        <td>5000</td>
+    </tr>
+    <tr>
+        <td>10.</td>
+        <td>百度前端技术学院</td>
+        <td>4000</td>
+    </tr>
+</table>
+
+<input type="text" class="input"/>
+
+<div class="scoll">
+    <ul>
+        <li id="li1"></li>
+        <li id="li2"></li>
+        <li id="li3"></li>
+    </ul>
+    <ol>
+        <li><a href="#li1">1</a></li>
+        <li><a href="#li2">2</a></li>
+        <li><a href="#li3">3</a></li>
+    </ol>
+</div>
+
 </body>
 </html>
