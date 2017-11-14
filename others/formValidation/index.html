@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="main">
-    <form class="form-horizontal" id="EmailForm" role="form">
+    <form class="form-horizontal" id="EmailForm" role="form" method="post">
         <div class="form-group">
             <label for="inputEmail" class="col-sm-2 control-label">邮箱</label>
             <div class="col-sm-10">
@@ -49,83 +49,84 @@
         var form = document.getElementById('EmailForm');
         var input = form.getElementsByTagName('input');
         var btn = document.getElementById('loginEmail');
-        btn.onclick = function () {
-            checkNull();
-            if (input[0].nextSibling == null) {  //如果邮箱未填写则不会检测email格式
+
+        function checkAll() {
+            input[0].onfocus = function () {
+                init(input[0]);
+            }
+            input[1].onfocus = function () {
+                init(input[1]);
+            }
+            btn.onclick = function () {
                 checkEmail();
-            }
-            if (input[0].nextSibling == null) {  //如果密码未填写则不会检测密码格式
                 checkPassword();
-            }
-            return false;
-        }
-
-        function init() {
-            for (var i = 0; i < input.length - 1; i++) {
-                input[i].onfocus = function () {  //输入框得到焦点会将报错状态取消
-                    error(this, '', 1);
+                if (checkEmail() && checkPassword()) {
+                    return true;
                 }
+                return false;
             }
         }
 
-        init();
-
-        function checkNull() {
-            for (var j = 0; j < input.length - 1; j++) {
-                if (input[j].nextSibling == null) {      //已经报错的不会再重复检测
-                    for (var i = 0; i < input.length - 1; i++) {
-                        if (input[i].value == null || input[i].value == "") {  //如果未填写将会报错
-                            error(input[i], "不能为空");
-                            input[i].className.indexOf('error') == -1 && (input[i].className += ' error');
-                        }
-                    }
-                }
+        function init(o) {
+            if (o.nextSibling != null) {
+                o.parentNode.parentNode.className = "form-group";
+                o.parentNode.removeChild(o.parentNode.lastChild);
             }
-
         }
 
-        // 检查输入的数据是否符合电子邮件地址的基本语法。
-        // 输入的数据必须包含 @ 符号和点号(.)。
-        // 同时，@ 不可以是邮件地址的首字符，并且 @ 之后需有至少一个点号
+
         function checkEmail() {
-            var apos = input[0].value.indexOf("@")
-            var dotpos = input[0].value.lastIndexOf(".")
+            var apos = input[0].value.indexOf("@");
+            var dotpos = input[0].value.lastIndexOf(".");
+
+            init(input[0]);
+
+            //检查是否为空
+            if (input[0].value == null || input[0].value == "") {
+                error(input[0], "邮箱不能为空");
+                return false;
+            }
+            // 检查输入的数据是否符合电子邮件地址的基本语法。
+            // 输入的数据必须包含 @ 符号和点号(.)。
+            // 同时，@ 不可以是邮件地址的首字符，并且 @ 之后需有至少一个点号
             if (apos < 1 || dotpos - apos < 2) {
                 error(input[0], "请填写正确的邮箱");
                 return false;
-            } else {
-                return true;
             }
+
+            return true;
         }
 
-        //校验密码：只能输入6-20位字母、数字、下划线
+
         function checkPassword() {
             var reg = new RegExp(/^[a-zA-Z]\w{5,17}$/);
+
+            init(input[1]);
+
+            //检查是否为空
+            if (input[1].value == null || input[1].value == "") {
+                error(input[1], "密码不能为空");
+                return false;
+            }
+            //校验密码格式：只能输入6-20位字母、数字、下划线
             if (!reg.test(input[1].value)) {
                 error(input[1], "请输入6-18位字母、数字、下划线");
                 return false;
-            } else {
-                return true;
             }
 
+            return true;
         }
 
-        //根据参数判断消除报错状态还是增加报错状态
-        function error(o, txt, show) {
-            //消除报错状态
-            if (arguments.length == 3 && show) {
-                if (o.nextSibling != null) {
-                    o.parentNode.parentNode.className = "form-group";
-                    o.parentNode.removeChild(o.parentNode.lastChild);
-                }
-            } else { //增加报错状态
-                var oSpan = document.createElement("span");
-                oSpan.className = "help-block";
-                oSpan.innerHTML = txt;
-                o.parentNode.appendChild(oSpan);
-                o.parentNode.parentNode.className = "form-group has-error";
-            }
+        //添加报错状态
+        function error(o, txt) {
+            var oSpan = document.createElement("span");
+            oSpan.className = "help-block";
+            oSpan.innerHTML = txt;
+            o.parentNode.appendChild(oSpan);
+            o.parentNode.parentNode.className = "form-group has-error";
         }
+
+        checkAll();
     }());
 </script>
 </body>
