@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务一：表单（一）单个表单项的检验</title>
+    <style type="text/css">
+        .body {
+            font: normal 14px/1 "微软雅黑";
+            width: 320px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        body form {
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group .inputName {
+            margin-left: 10px;
+            margin-right: 10px;
+            line-height: 28px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            text-indent: 10px;
+        }
+        .form-group .inputName:focus {
+            outline: none;
+            border-color: #66afe9;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        }
+
+        .form-group .submitBtn {
+            padding-left: 14px;
+            padding-right: 14px;
+            line-height: 30px; /*border:none补齐*/
+            color: #ffffff;
+            background-color: #337ab7;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group .submitBtn:hover {
+            background-color: #2E679F;
+        }
+
+        .has-error label,
+        .has-error .help-block {
+            color: #a94442;
+        }
+
+        .has-error .inputName {
+            border-color: #a94442;
+        }
+
+        .has-success label,
+        .has-success .help-block{
+            color: #3c763d;
+        }
+        .has-success .inputName {
+            border-color: #3c763d;
+        }
+
+        .help-block {
+            color: #737373;
+            margin-top: 10px;
+            margin-left: 60px;
+            display: block;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="body">
+    <form action="" method="post" role="form">
+        <div class="form-group">
+            <label for="oTxt">名称</label>
+            <input id="oTxt" type="text" class="inputName" placeholder="">
+            <button id="oBtn" type="submit" class="submitBtn">验证</button>
+        </div>
+    </form>
+    <div class="tip">
+        <ul>
+            <li>校验规则：
+                <ol>
+                    <li>字符数为4~16位</li>
+                    <li>每个英文字母、数字、英文符号长度为1</li>
+                    <li>每个汉字，中文符号长度为2</li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<script>
+    window.onload = function () {
+        var oTxt = document.getElementById('oTxt');
+        var oBtn = document.getElementById('oBtn');
+
+        oBtn.onclick = function () {
+            var val = oTxt.value.replace(/[\u4e00-\u9fa5]/, '**');  //将汉字替换成两个字符
+            if (val.length < 4 || val.length > 16) {
+                change(oTxt, "请输入4~16位字符", 0);
+                return false;
+            } else {
+                change(oTxt, "验证通过", 1);
+                return false;
+            }
+        }
+        oTxt.onfocus = function () {
+            if (this.parentNode.classList.contains("has-success") || this.parentNode.classList.contains("has-error")) {
+                this.parentNode.classList.remove("has-success");
+                this.parentNode.classList.remove("has-error");
+                this.parentNode.removeChild(this.parentNode.lastChild);
+            }
+        }
+
+        //o多个输入框验证时有用
+        function change(o, txt, flag) {
+            var oSpan = document.createElement("span");
+            oSpan.className = "help-block";
+            oSpan.innerHTML = txt;
+            o.parentNode.appendChild(oSpan);
+            if (flag) {
+                o.parentNode.classList.add("has-success");
+            } else {
+                o.parentNode.classList.add("has-error");
+            }
+        }
+    }
+</script>
+</body>
+</html>

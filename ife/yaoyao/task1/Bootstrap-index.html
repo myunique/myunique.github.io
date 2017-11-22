@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务一：表单（一）单个表单项的检验</title>
+    <link rel="stylesheet" href="./style/bootstrap.min.css">
+    <style type="text/css">
+        .body {
+            width: 25%;
+            margin: 10% auto;
+        }
+
+        #oTxt {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .help-block {
+            margin-left: 42px;
+        }
+    </style>
+</head>
+<body>
+<div class="body">
+    <form action="" method="post" role="form" class="">
+        <div id="oForm" class="form-group form-inline">
+            <label class="control-label" for="oTxt">名称</label>
+            <input id="oTxt" type="text" class="form-control" placeholder="">
+            <button id="oBtn" type="submit" class="btn btn-primary">验证</button>
+        </div>
+
+    </form>
+
+    <ul class="list-unstyled">
+        <li>校验规则：
+            <ol>
+                <li>字符数为4~16位</li>
+                <li>每个英文字母、数字、英文符号长度为1</li>
+                <li>每个汉字，中文符号长度为2</li>
+            </ol>
+        </li>
+    </ul>
+</div>
+<script>
+    window.onload = function () {
+        var oForm = document.getElementById('oForm');
+        var oTxt = document.getElementById('oTxt');
+        var oBtn = document.getElementById('oBtn');
+
+        oBtn.onclick = function () {
+            var val = oTxt.value.replace(/[\u4e00-\u9fa5]/, '**');  //将汉字替换成两个字符
+            if (val.length < 4 || val.length > 16) {
+                change(oTxt, "请输入4~16位字符", 0);
+                return false;
+            } else {
+                change(oTxt, "验证通过", 1);
+                return false;   //为了看到效果
+                //return true;
+            }
+        }
+        oTxt.onfocus = function () {
+            if (oForm.classList.contains("has-success") || oForm.classList.contains("has-error")) {
+                oForm.classList.remove("has-success");
+                oForm.classList.remove("has-error");
+                oForm.removeChild(oForm.lastChild);
+            }
+        }
+
+        //o多个输入框验证时有用
+        function change(o, txt, flag) {
+            var oSpan = document.createElement("span");
+            oSpan.className = "help-block";
+            oSpan.innerHTML = txt;
+            oForm.appendChild(oSpan);
+            if (flag) {
+                oForm.classList.add("has-success");
+            } else {
+                oForm.classList.add("has-error");
+            }
+        }
+    }
+</script>
+</body>
+</html>

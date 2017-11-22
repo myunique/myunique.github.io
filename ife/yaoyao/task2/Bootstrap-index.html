@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务二：表单（二）多个表单项的动态校验</title>
+    <link rel="stylesheet" href="../task1/style/bootstrap.min.css">
+    <style type="text/css">
+        .body {
+            width: 400px;
+            margin: 100px auto;
+        }
+
+        #oBtn {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class="body">
+    <form action="" method="post" role="form" class="form-horizontal">
+        <div id="name" class="form-group">
+            <label class="control-label col-md-3" for="nameTxt">名称</label>
+            <div class="col-md-9">
+                <input id="nameTxt" type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+        <div id="password" class="form-group">
+            <label class="control-label col-md-3" for="passwordTxt">密码</label>
+            <div class="col-md-9">
+                <input id="passwordTxt" type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+        <div id="confirm" class="form-group">
+            <label class="control-label col-md-3" for="confirmTxt">密码确认</label>
+            <div class="col-md-9">
+                <input id="confirmTxt" type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+        <div id="email" class="form-group">
+            <label class="control-label col-md-3" for="emailTxt">邮箱</label>
+            <div class="col-md-9">
+                <input id="emailTxt" type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+        <div id="phone" class="form-group">
+            <label class="control-label col-md-3" for="phoneTxt">手机</label>
+            <div class="col-md-9">
+                <input id="phoneTxt" type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <button id="oBtn" type="submit" class="btn btn-primary">验证</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<ul class="list-unstyled">
+    <li>校验规则：
+        <ol>
+            <li>表单获得焦点时，下方显示表单填写规则</li>
+            <li>表单失去焦点时校验表单内容</li>
+            <li>校验结果正确时，表单边框显示绿色，并在下方显示验证通过的描述文字</li>
+            <li>校验结果错误时，表单边框显示红色，并在下方显示验证错误的描述文字</li>
+            <li>点击提交按钮时，对页面中所有输入进行校验，校验结果显示方式同上。若所有表单校验通过，弹窗显示“提交成功”，否则显示“提交失败”</li>
+        </ol>
+    </li>
+</ul>
+</div>
+<script>
+    window.onload = function () {
+        var oTxt = document.getElementsByTagName("input");
+        var oBtn = document.getElementById('oBtn');
+
+
+        // 初始化，消除提示，避免重复
+        function init(o) {
+            var that = o.parentNode;
+            if (o.nextSibling != null) {
+                that.parentNode.classList.remove("has-success");
+                that.parentNode.classList.remove("has-error");
+                that.removeChild(that.lastChild);
+            }
+        }
+
+        // 显示提示，flag为0报错，为1通过，为2提示
+        function change(o, txt, flag) {
+            var oSpan = document.createElement("span");
+            oSpan.className = "help-block";
+            oSpan.innerHTML = txt;
+            o.parentNode.appendChild(oSpan);
+            if (flag == 1) {
+                o.parentNode.parentNode.classList.add("has-success");
+            } else if (flag == 0) {
+                o.parentNode.parentNode.classList.add("has-error");
+            }
+        }
+
+        // 名称校验
+        function nameTest() {
+            var val = this.value.replace(/[\u4e00-\u9fa5]/, '**');  //将汉字替换成两个字符
+            init(this);
+            if (val.length < 4 || val.length > 16) {
+                change(this, "名称不能为空", 0);
+                return false;
+            } else {
+                change(this, "验证通过", 1);
+                return true;
+            }
+        }
+
+        // 名称提示
+        function nameTip() {
+            init(this);
+            change(this, "请输入4~16位字符", 2);
+        }
+
+        // 密码校验
+        function passwordTest() {
+            var reg = new RegExp(/^[a-zA-Z]\w{5,17}$/);
+            init(this);
+            if (this.value.length == 0) {
+                change(this, "密码不能为空", 0);
+                return false;
+            } else if (!reg.test(this.value)) {
+                change(this, "密码不可用", 0);
+                return false;
+            } else {
+                change(this, "密码可用", 1);
+                return true;
+            }
+        }
+
+        // 密码提示
+        function passwordTip() {
+            init(this);
+            change(this, "请输入以字母开头的6-18位密码，只能包含字母、数字和下划线", 2);
+        }
+
+        // 密码重复校验
+        function againTest() {
+            init(this);
+            if (this.value.length == 0) {
+                change(this, "密码确认不能为空", 0);
+                return false;
+            } else if (this.value != oTxt[1].value) {
+                change(this, "请输入相同密码", 0);
+                return false;
+            } else {
+                change(this, "密码输入一致", 1);
+                return true;
+            }
+        }
+
+        // 密码重复提示
+        function againTip() {
+            init(this);
+            change(this, "再次输入相同密码", 2);
+        }
+
+        // 邮箱校验
+        function emailTest() {
+            var reg = new RegExp(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
+            init(this);
+            if (this.value.length == 0) {
+                change(this, "邮箱地址不能为空", 0);
+                return false;
+            } else if (!reg.test(this.value)) {
+                change(this, "邮箱格式错误", 0);
+                return false;
+            } else {
+                change(this, "邮箱格式正确", 1);
+                return true;
+            }
+        }
+
+        // 邮箱提示
+        function emailTip() {
+            init(this);
+            change(this, "请输入邮箱地址", 2);
+        }
+
+        // 手机校验
+        function phoneTest() {
+            var reg = new RegExp(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/);
+            init(this);
+            if (this.value.length == 0) {
+                change(this, "手机号码不能为空", 0);
+                return false;
+            } else if (!reg.test(this.value)) {
+                change(this, "手机格式错误", 0);
+                return false;
+            } else {
+                change(this, "手机格式正确", 1);
+                return true;
+            }
+        }
+
+        // 手机提示
+        function phoneTip() {
+            init(this);
+            change(this, "请输入11位手机号码", 2);
+        }
+
+        oTxt[0].onblur = nameTest;
+        oTxt[0].onfocus = nameTip;
+        oTxt[1].onblur = passwordTest;
+        oTxt[1].onfocus = passwordTip;
+        oTxt[2].onblur = againTest;
+        oTxt[2].onfocus = againTip;
+        oTxt[3].onblur = emailTest;
+        oTxt[3].onfocus = emailTip;
+        oTxt[4].onblur = phoneTest;
+        oTxt[4].onfocus = phoneTip;
+        oBtn.onclick = function (event) {
+            var nameTe=nameTest.call(oTxt[0]),
+                passwordTe=passwordTest.call(oTxt[1]),
+                againTe=againTest.call(oTxt[2]),
+                emailTe=emailTest.call(oTxt[3]),
+                phoneTe=phoneTest.call(oTxt[4]);
+            if (!nameTe || !passwordTe || !againTe || !emailTe || !phoneTe) {
+                event.preventDefault(); // 禁止表单默认action
+                alert("验证有误！");
+                return false;
+            } else {
+                event.preventDefault(); // 禁止表单默认action
+                alert("验证通过！");
+                return true;
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

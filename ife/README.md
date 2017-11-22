@@ -25,3 +25,8 @@ some homework to http://ife.baidu.com
      * [task4](https://myunique.github.io/ife/binbin/task4/)
      * [task5](https://myunique.github.io/ife/binbin/task5/)
      * [task6](https://myunique.github.io/ife/binbin/task6/)
+ + yaoyao
+     * [task1](https://myunique.github.io/ife/yaoyao/task1/index.html)
+     * [task2](https://myunique.github.io/ife/yaoyao/task2/index.html)
+     * [task3](https://myunique.github.io/ife/yaoyao/task3/index.html)
+

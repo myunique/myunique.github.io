@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务三：表单（三）联动</title>
+    <style type="text/css">
+        .body {
+            font: normal 14px/1 "微软雅黑";
+            width: 470px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        body form {
+            margin-top: 100px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            display: inline-block;
+            text-align: right;
+            width: 60px;
+        }
+
+        .form-group .input {
+            margin: 10px 20px;
+            width: 260px;
+            line-height: 28px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            text-indent: 10px;
+        }
+
+        .form-group .input:focus {
+            outline: none;
+            border-color: #66afe9;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        }
+
+        .form-group .radio {
+            vertical-align: middle;
+            margin-top: -2px;
+            margin-bottom: 1px;
+        }
+
+        .form-group .radio + label {
+            text-align: left;
+            margin-left: 0;
+        }
+
+        .form-group .select {
+            margin: 10px 20px;
+            width: 120px;
+            height: 30px;
+            line-height: 28px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            text-indent: 10px;
+        }
+
+        .form-group .select:focus {
+            outline: none;
+            border-color: #66afe9;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .identify {
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="body">
+    <form action="" method="post" role="form">
+        <div class="form-group identify">
+            <input type="radio" class="radio ident" id="student" value="在校生" name="idnet" checked>
+            <label for="student">在校生</label>
+            <input type="radio" class="radio ident" id="noStudent" value="非在校生" name="idnet">
+            <label for="noStudent">非在校生</label>
+        </div>
+        <div class="studentItem form-group">
+            <label>学校</label>
+            <select id="city" class="select">
+                <option>北京</option>
+                <option>上海</option>
+                <option>南京</option>
+                <option>杭州</option>
+            </select>
+            <select id="beijing" class="select">
+                <option>北京大学</option>
+                <option>清华大学</option>
+                <option>中国人民大学</option>
+                <option>北京师范大学</option>
+            </select>
+            <select id="shanghai" class="select hidden">
+                <option>复旦大学</option>
+                <option>上海交通大学</option>
+                <option>同济大学</option>
+                <option>华东师范大学</option>
+            </select>
+            <select id="nanjing" class="select hidden">
+                <option>南京大学</option>
+                <option>东南大学</option>
+                <option>中国药科大学</option>
+                <option>河海大学</option>
+            </select>
+            <select id="hangzhou" class="select hidden">
+                <option>浙江大学</option>
+                <option>浙江工业大学</option>
+                <option>杭州电子科技大学</option>
+                <option>浙江理工大学</option>
+            </select>
+        </div>
+        <div class="noStudentItem form-group hidden">
+            <label>就业单位</label>
+            <input type="text" class="input" id="company">
+        </div>
+    </form>
+</div>
+</div>
+<script>
+    window.onload = function () {
+        var ident = document.getElementsByClassName("ident");
+        var studentItem = document.getElementsByClassName('studentItem');
+        var noStudentItem = document.getElementsByClassName('noStudentItem');
+        var select=document.getElementsByClassName("select");
+
+        ident[0].onchange = function () {
+            studentItem[0].classList.remove("hidden");
+            noStudentItem[0].classList.add("hidden");
+        }
+        ident[1].onchange = function () {
+            studentItem[0].classList.add("hidden");
+            noStudentItem[0].classList.remove("hidden");
+        }
+        select[0].onchange=function () {
+            switch (select[0].value){
+                case "北京":
+                    select[1].classList.remove("hidden");
+                    select[2].classList.add("hidden");
+                    select[3].classList.add("hidden");
+                    select[4].classList.add("hidden");
+                    break;
+                case "上海":
+                    select[1].classList.add("hidden");
+                    select[2].classList.remove("hidden");
+                    select[3].classList.add("hidden");
+                    select[4].classList.add("hidden");
+                    break;
+                case "南京":
+                    select[1].classList.add("hidden");
+                    select[2].classList.add("hidden");
+                    select[3].classList.remove("hidden");
+                    select[4].classList.add("hidden");
+                    break;
+                case "杭州":
+                    select[1].classList.add("hidden");
+                    select[2].classList.add("hidden");
+                    select[3].classList.add("hidden");
+                    select[4].classList.remove("hidden");
+                    break;
+            }
+        }
+
+    }
+</script>
+</body>
+</html>
