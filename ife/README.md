@@ -17,6 +17,7 @@ some homework to http://ife.baidu.com
      * [task8](https://myunique.github.io/ife/xiaowei/task8)
      * [task9](https://myunique.github.io/ife/xiaowei/task9)
      * [task10](https://myunique.github.io/ife/xiaowei/task10)
+     * [task11](https://myunique.github.io/ife/xiaowei/task11)
      * [task12](https://myunique.github.io/ife/xiaowei/task12)
  + binbin
      * [task1](https://myunique.github.io/ife/binbin/task1/)
