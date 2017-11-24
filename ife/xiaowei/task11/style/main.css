@@ -7,12 +7,11 @@ html {
 
 /*通过改变根元素字体大小实现自适应*/
 @media (min-width: 1440px) {
+    /*屏幕过大时，采用固定宽度显示，不再全屏不然会比较累*/
     body {
         width: 1440px;
         margin: 0 auto;
     }
-
-    /*屏幕过大时，采用固定宽度显示，不再全屏不然会比较累*/
 }
 
 @media (max-width: 1024px) {
@@ -23,11 +22,17 @@ html {
 
 @media (max-width: 768px) {
     html {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 481px) {
+    html {
         font-size: 22px;
     }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 375px) {
     html {
         font-size: 20px;
     }
@@ -40,11 +45,10 @@ html {
 }
 
 @media (max-width: 273px) {
+    /*屏幕过小时产生滚动条*/
     html {
         width: 273px;
     }
-
-    /*屏幕过小时产生滚动条*/
 }
 
 body {
@@ -113,39 +117,22 @@ nav li:hover {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
 }
 
 .tagImgBox .tagImg {
-    width: 20%;
-
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: column wrap;
-    flex-flow: column wrap;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
 }
 
 .tagImgBox .tagImg img {
     max-width: 70%;
+    display: block;
     margin: 0.7rem auto;
 }
 
 .tagImgBox .tagImg figcaption {
+    text-align: center;
     font-size: 0.8rem;
     font-weight: bold;
 }
@@ -164,7 +151,7 @@ hr.hr {
 
 .fieldBox {
     width: 90%;
-    height: 40%;
+    /*height: 40%;*/
     margin: 0 auto;
 
     display: -webkit-box;
@@ -174,7 +161,6 @@ hr.hr {
 
 .fieldBox figure {
     margin-bottom: 1rem;
-
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
@@ -215,58 +201,49 @@ hr.hr {
     vertical-align: middle;
 }
 
-.module .moduleContent {
+.moduleContent {
     width: 90%;
     margin: 0 auto;
-    /*font-size: 0;*/
+    font-size: 0;
+}
+
+.topModule {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-}
-
-.module .leftModule {
-    width: 30%;
-    display: inline-block;
+    margin: auto auto 1rem;
 }
 
 .leftModule img {
-    max-width: 90%;
-    margin-bottom: 10%;
-    vertical-align: bottom; /*消除图片产生的间隙*/
+    width: 90%;
 }
 
-.module .rightModule {
-    width: 70%;
-    padding-bottom: 1%;
+.topModule div {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
 
+.midModule, .rightModule {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
+    -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    -ms-flex-line-pack: justify;
-    align-content: space-between;
 }
 
-.rightModule p {
+.topModule p {
     background-color: #f7f7f7;
     font-size: 0.8rem;
     font-weight: bold;
     color: #333333;
-    text-align: center;
-    width: 48%;
-    height: 18%;
-    margin-bottom: 3%;
-
+    width: 90%;
+    height: 45%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -276,6 +253,15 @@ hr.hr {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+}
+
+.midModule p {
+    margin: 0 auto;
+}
+
+.rightModule p {
+    margin-right: 0;
+    margin-left: auto;
 }
 
 /*文章*/
@@ -343,28 +329,39 @@ hr.hr {
 }
 
 .article .articleBox2 {
-    -webkit-box-orient: horizontal;
+    -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
+    -ms-flex-direction: column;
+    flex-direction: column;
 }
 
 .article .threeImgBox {
     margin: 0.5rem auto;
-    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -ms-flex-line-pack: justify;
-    align-content: space-between;
+}
+
+.threeImgBox .smallImgBox {
+    margin: 0 auto;
+    font-size: 0;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
 }
 
 .article .threeImgBox img {
-    display: inline-block;
-    width: 30%;
-    height: 100%; /*防止图片拉伸*/
+    max-width: 90%;
+    display: block;
+}
+
+/*模拟justify-content: space-between;*/
+.threeImgBox .midImg {
+    margin: 0 auto;
+}
+
+.threeImgBox .rightImg {
+    margin-right: 0;
+    margin-left: auto;
 }
 
