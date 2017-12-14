@@ -13,7 +13,7 @@ some homework to http://www.imooc.com/
        * [productClassify](https://myunique.github.io/mooc/E-commerceWebsite/productClassify.html)
        * [filterPage](https://myunique.github.io/mooc/E-commerceWebsite/filterPage.html)
        * [details](https://myunique.github.io/mooc/E-commerceWebsite/details.html)
-       * [shoppingCart](https://myunique.github.io/mooc/E-commerceWebsite/shoppingCart.html)
+       * [shoppingCart](https://myunique.github.io/mooc/E-commerceWebsite/submitOrder.html)
        * [register](https://myunique.github.io/mooc/E-commerceWebsite/register.html)
        * [login](https://myunique.github.io/mooc/E-commerceWebsite/login.html)
      * [waterfall](https://myunique.github.io/mooc/waterfall/index-css3.html)

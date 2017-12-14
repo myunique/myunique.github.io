@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>购物车</title>
+<title>提交订单</title>
 <link type="text/css" rel="stylesheet" href="style/reset.css">
 <link type="text/css" rel="stylesheet" href="style/main.css">
 <!--[if IE 6]>
@@ -16,17 +16,17 @@
 	<div class="topBar">
 		<div class="comWidth">
 			<div class="leftArea">
-				<a href="#" class="collection">收藏慕课</a>
+				<a href="#" onclick="javascript:window.external.AddFavorite(document.location.href,document.title)" title="收藏本站到收藏夹" class="collection">收藏慕课</a>
 			</div>
 			<div class="rightArea">
-				欢迎来到慕课网！<a href="#">[登录]</a><a href="#">[免费注册]</a>
+				欢迎来到慕课网！<a target="_self" href="login.html">[登录]</a><a target="_self" href="register.html">[注册]</a>
 			</div>
 		</div>
 	</div>
 	<div class="logoBar">
 		<div class="comWidth">
 			<div class="logo fl">
-				<a href="#"><img src="images/logo.jpg" alt="慕课网"></a>
+				<a target="_self" href="index.html"><img src="images/logo.jpg" ></a>
 			</div>
 			<div class="stepBox fr">
 				<div class="step"></div>
@@ -45,7 +45,7 @@
 		<div class="shopping_cont padding_shop">
 			<ul class="shopping_list">
 				<li><span class="shopping_list_text"><em>*</em>选择地区：</span>
-					<div class="select">
+					<div class="select" id="select">
 						<h3>海淀区五环内</h3><span></span>
 						<ul class="show_select">
 							<li>上帝</li>

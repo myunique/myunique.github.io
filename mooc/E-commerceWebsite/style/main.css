@@ -76,6 +76,7 @@
     font-family: "Microsoft YaHei", "微软雅黑";
     background-color: #FF8C00;
     color: #FFF;
+    cursor: pointer;
 }
 
 /*购物车*/
@@ -88,6 +89,7 @@
     color: #FFF;
     margin-right: 59px;
     display: inline;
+    cursor: pointer;
 }
 
 .shopText { /*font-size:14px; font-family:"Microsoft YaHei", "微软雅黑"; line-height:35px;*/
@@ -152,7 +154,7 @@
     color: #FFF;
 }
 
-.nav .active {
+.nav a:hover {
     background-color: #4593FD;
 }
 
@@ -164,6 +166,7 @@
     top: 35px;
     width: 100%;
     padding-bottom: 1px;
+    cursor: pointer;
 }
 
 .shopClass_item {
@@ -223,14 +226,14 @@
 
 /*弹出的菜单*/
 .shopClass_list {
+    display: none;
     width: 568px;
     border: #CCC solid 1px;
     position: absolute;
     left: 190px;
-    top: 35px;
+    top: 0;
     background-color: #FFF;
     z-index: 4;
-    display: none;
 }
 
 .shopClass_cont {
@@ -305,6 +308,7 @@
 
 .imgBox img {
     display: block;
+    float: left;
 }
 
 .imgNum {
@@ -313,15 +317,17 @@
     bottom: 15px;
     width: 100%;
     text-align: center;
+    z-index: 2;
 }
 
-.imgNum a {
+.imgNum span {
     width: 20px;
     height: 5px;
     overflow: hidden;
     background-color: #FFF;
     display: inline-block;
     margin: 0 3px;
+    cursor: pointer;
 }
 
 .imgNum .active {
@@ -335,8 +341,10 @@
 }
 
 .banner_big .imgBox {
-    width: 1620px;
+    width: 4860px;
     height: 326px;
+    position: absolute;
+    z-index: 1;
 }
 
 .banner_sm,
@@ -348,6 +356,38 @@
 .banner_sm .imgBox {
     width: 380px;
     height: 400px;
+}
+
+.arrow {
+    cursor: pointer;
+    display: none;
+    line-height: 65px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    width: 50px;
+    height: 70px;
+    position: absolute;
+    z-index: 2;
+    top: 130px;
+    background-color: RGBA(0, 0, 0, .3);
+    color: #fff;
+}
+
+.arrow:hover {
+    background-color: RGBA(0, 0, 0, .7);
+}
+
+#container:hover .arrow {
+    display: block;
+}
+
+#prev {
+    left: 20px;
+}
+
+#next {
+    right: 20px;
 }
 
 /*商品标题*/
@@ -840,6 +880,7 @@
 /*组件*/
 .select {
     border: #999 solid 1px;
+    width: 80px;
     height: 22px;
     line-height: 22px;
     float: left;
@@ -848,6 +889,7 @@
     padding-right: 20px;
     position: relative;
     z-index: 4;
+    cursor: pointer;
 }
 
 .select h3 {
@@ -1771,6 +1813,7 @@
 .login_btn {
     width: 309px;
     height: 36px;
+    cursor: pointer;
     background: url(../images/icon/login_btn.jpg) left top no-repeat;
 }
 
@@ -1793,8 +1836,8 @@
     height: 31px;
     background: url(../images/icon/red_link.jpg) left top no-repeat;
     position: absolute;
-    right: 31px;
-    bottom: -31px;
+    right: 74px;
+    bottom: 60px;
 }
 
 .red_logo .comWidth {
