@@ -243,7 +243,9 @@ body {
     height: 1.2rem;
     border: 1px solid #cccccc;
     text-indent: 0.5rem;
+    /*移动端ios的页面会变成圆角*/
     -webkit-appearance: none;
+    border-radius: 0;
 }
 
 /*tip图片*/
@@ -260,5 +262,6 @@ body {
     border-color: #005983;
     width: 60%;
     height: 2.5rem;
+    /*移动端ios按钮样式改变*/
     -webkit-appearance: none;
 }
