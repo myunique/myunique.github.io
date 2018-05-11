@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!--在桌面开发的时候可以让IE浏览器以最新的模式渲染页面-->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <!--适应移动端屏幕，设置初始缩放并禁止用户缩放-->
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <!--防止通过手机百度打开网页时其对网页进行转码，并插入百度的广告-->
+    <title>demo</title>
+    <link rel="stylesheet" type="text/css" href="style/resetMobile.css">
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+</head>
+<body>
+    <!--头部-->
+    <header id="header">
+        <!--标题-->
+        <a href="#"><img src="img/left.png" id="prev" alt="返回"/></a>
+        <h3>经销商财富入口</h3>
+        <a href="#"><img src="img/more.png" id="more" alt="更多"/></a>
+    </header><!--头部结束-->
+
+    <!--顶部大图-->
+    <section class="topImg">
+        <img id="topImg" src="img/main.jpg" alt="中国女装网"/>
+    </section>
+
+    <!--下部分-->
+    <section id="bottomBox">
+        <!--产生上下间距1-->
+        <section class="blank1"></section>
+        <!--广告标语-->
+        <section class="font1" id="adBox">
+            <section class="adText adText1"><p>权威网站</p><p>交易放心</p></section>
+            <section class="adText adText2"><p>一手货源</p><p>厂家直销</p></section>
+            <section class="adText adText3"><p>款式多样</p><p>风格齐全</p></section>
+            <section class="adText adText4"><p>线上看款</p><p>线下交易</p></section>
+        </section>
+        <!--产生上下间距1-->
+        <section class="blank1"></section>
+
+        <section class="font1 selectStyle">
+            <section class="smallTitle">意向风格：</section>
+            <section class="content" id="styleBtn">
+                <button class="on">休闲</button><button>淑女</button><button>商务</button>
+                <br/>
+                <button>欧美</button><button>日韩</button><button>其他</button>
+            </section>
+        </section>
+        <!--产生上下间距1-->
+        <section class="blank2"></section>
+
+        <section class="font1 selectMarket">
+            <section class="smallTitle">市场定位：</section>
+            <section class="content" id="marketBtn">
+                <button class="on">高端</button><button>中高端</button>
+                <br/>
+                <button>中端</button><button>中低端</button>
+            </section>
+
+        </section>
+        <!--产生上下间距1-->
+        <section class="blank2"></section>
+        <!--联系人-->
+        <section class="font1" id="contacksBox">
+            <section class="smallTitle">联系人：</section>
+            <section class="content" >
+                <input type="text" id="contacks">
+            </section>
+        </section>
+
+        <!--产生上下间距1-->
+        <section class="blank2"></section>
+        <!--联系电话-->
+        <section class="font1" id="phoneBox">
+            <section class="smallTitle">联系电话：</section>
+            <section class="content" >
+                <input type="text" id="phone">
+            </section>
+        </section>
+
+        <!--产生上下间距2-->
+        <section class="blank3"></section>
+        <!--tip图片-->
+        <section id="tipBox">
+            <img id="bottomImg" src="img/tip.jpg" alt="中国女装网"/>
+        </section>
+        <!--产生上下间距-->
+        <section class="blank3"></section>
+        <section id="submitBox">
+            <input type="submit" value="提交" id="submit">
+        </section>
+    </section>
+
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
