@@ -56,7 +56,7 @@ body {
 }
 
 /*flex布局*/
-#adBox,
+#ad,
 #tipBox,
 #submitBox,
 #contacksBox,
@@ -147,35 +147,33 @@ body {
 }
 
 /*广告语*/
-/*#adBox {*/
-    /*-webkit-box-pack: justify;*/
-    /*-ms-flex-pack: justify;*/
-    /*justify-content: space-between;*/
-    /*width: 100%;*/
-/*}*/
+#ad {
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
 
-/*.adText {*/
-    /*width: 20%;*/
-    /*height: 2.5rem;*/
-    /*color: #ffffff;*/
-    /*font-size: 0.6rem;*/
-    /*border-radius: 0.2rem;*/
-    /*display: -webkit-box;*/
-    /*display: -ms-flexbox;*/
-    /*display: flex;*/
-    /*-webkit-box-orient: vertical;*/
-    /*-webkit-box-direction: normal;*/
-    /*-ms-flex-flow: column;*/
-    /*flex-flow: column;*/
-    /*-webkit-box-pack: justify;*/
-    /*-ms-flex-pack: justify;*/
-    /*justify-content: space-between;*/
-    /*-webkit-box-align: center;*/
-    /*-ms-flex-align: center;*/
-    /*align-items: center;*/
-    /*padding-top: 0.3rem;*/
-    /*padding-bottom: 0.3rem;*/
-/*}*/
+#ad section {
+    width: 20%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    height: 2rem;
+    border-radius: 0.2rem;
+    color: #ffffff;
+}
 
 .adText1 {
     background-color: #0177a9;
@@ -194,8 +192,8 @@ body {
 }
 
 /*意向风格*/
-.selectStyle,
-.selectMarket {
+#selectStyle,
+#selectMarket {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -267,3 +265,4 @@ body {
     /*移动端ios按钮样式改变*/
     -webkit-appearance: none;
 }
+
